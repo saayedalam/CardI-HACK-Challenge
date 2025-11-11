@@ -1,0 +1,27 @@
+# Python caches & venvs
+__pycache__/
+*.pyc
+.venv/
+.venv~/
+env/
+venv/
+
+# Git
+.git
+.gitignore
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Local data & outputs (mount at runtime instead)
+data/raw/*
+submissions/*
+
+# Notebook checkpoints
+notebooks/.ipynb_checkpoints/
+
+# Build artifacts
+dist/
+build/
