@@ -36,3 +36,6 @@ venv/
 
 # Release bundles
 release/*.zip
+
+# Ignore local release artifacts
+release/
