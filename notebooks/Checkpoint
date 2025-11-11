@@ -1,0 +1,21 @@
+Features
+
+SEVERITY: clinical_features + ["Variant.Pathogene"]
+
+MACE: clinical_features + ["Variant.Pathogene", "PRS_MACE_K50"]
+
+PRS
+
+SNP ranking: correlations computed on train only
+
+PRS_MACE_K50 = weighted sum of per-dataset z-scored SNPs (train z-scored by train stats; test by test stats)
+
+Models
+
+SEVERITY: LightGBM (n_estimators=300, lr=0.05, random_state=42) → isotonic calibration with StratifiedKFold(5, shuffle=True, random_state=42)
+
+MACE: LightGBM (n_estimators=300, lr=0.05, class_weight={0:1,1:3,2:4}, random_state=42)
+
+Submission columns
+
+trustii_id, OUTCOME MACE (label 0/1/2), OUTCOME SEVERITY (probability)

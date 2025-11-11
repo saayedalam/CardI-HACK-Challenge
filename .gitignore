@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+.env
+.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Build & cache
+.dist/
+build/
+dist/
+*.log
+
+# Data & outputs (keep raw CSVs out of git; you already have them locally)
+data/raw/*
+!data/raw/.gitkeep
+
+# Submissions (don’t version every CSV by default)
+submissions/*
+!submissions/.gitkeep
+
+# Notebooks checkpoints
+notebooks/.ipynb_checkpoints/
+
+.venv~/
+.venv/
+venv/

@@ -1,0 +1,42 @@
+# CardI-HACK project configuration
+
+data:
+  snp_range: [1, 75]        # SNPs considered when ranking for PRS
+  rank_method: spearman     # correlation method for SNP ranking
+
+prs:
+  mace:
+    k: 50                   # number of top SNPs to include in PRS_MACE
+    zscore: per_dataset     # z-score each dataset separately (train by train stats, test by test stats)
+
+models:
+  severity:
+    type: lightgbm
+    params:
+      n_estimators: 300
+      learning_rate: 0.05
+      random_state: 42
+    calibration:
+      method: isotonic
+      cv:
+        n_splits: 5
+        shuffle: true
+        random_state: 42
+
+  mace:
+    type: lightgbm
+    params:
+      n_estimators: 300
+      learning_rate: 0.05
+      class_weight: {0: 1, 1: 3, 2: 4}
+      random_state: 42
+    bagging:
+      enabled: true
+      seeds: [11, 19, 23, 37, 42]   # majority vote; optional (can set enabled: false)
+
+submission:
+  columns:
+    id: trustii_id
+    mace_label: OUTCOME MACE
+    severity_proba: OUTCOME SEVERITY
+
